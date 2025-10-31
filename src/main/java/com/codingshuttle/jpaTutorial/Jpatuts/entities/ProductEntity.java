@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
         }
 
 )
-public class Products {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
