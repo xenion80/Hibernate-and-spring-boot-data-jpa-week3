@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
 @SpringBootTest
 class JpatutorialApplicationTests {
 
@@ -22,10 +26,23 @@ class JpatutorialApplicationTests {
         ProductEntity productEntity= ProductEntity.builder()
                 .sku("nestle234")
                 .title("Nestle Chocolate")
-                .quantity(12)
+                .price(BigDecimal.valueOf(23.45))
+                .quantity(4)
                 .build();
         ProductEntity saproductRepository=productRepository.save(productEntity);
         System.out.println(saproductRepository);
+    }
+    @Test
+    void getRepository(){
+       // List<ProductEntity> entities=productRepository.findBycreatedAtAfter(LocalDateTime.of(2024,1,1,0,0,0));
+        //List<ProductEntity> entities=productRepository.findByQuantityGreaterThanOrPriceLessThan(4, BigDecimal.valueOf(23.45));
+        List<ProductEntity> entities=productRepository.findByTitleContainingIgnoreCase("CHOco");
+        System.out.println(entities);
+    }
+    @Test
+    void getSingleFromRepository(){
+        Optional<ProductEntity> productEntity=productRepository.findTitleAndPrice("Pepsi",BigDecimal.valueOf(14.4));
+        productEntity.ifPresent(System.out::println);
     }
 
 

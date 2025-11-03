@@ -35,9 +35,9 @@ public class ProductEntity {
     private BigDecimal price;
     private Integer quantity;
     @CreationTimestamp
-    private LocalDateTime createdat;
+    private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updatedat;
+    private LocalDateTime updatedAt;
 
 
 }
