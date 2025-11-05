@@ -5,6 +5,7 @@ import com.codingshuttle.jpaTutorial.Jpatuts.repositories.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -36,7 +37,7 @@ class JpatutorialApplicationTests {
     void getRepository(){
        // List<ProductEntity> entities=productRepository.findBycreatedAtAfter(LocalDateTime.of(2024,1,1,0,0,0));
         //List<ProductEntity> entities=productRepository.findByQuantityGreaterThanOrPriceLessThan(4, BigDecimal.valueOf(23.45));
-        List<ProductEntity> entities=productRepository.findByTitleContainingIgnoreCase("CHOco");
+        List<ProductEntity> entities=productRepository.findByTitleContainingIgnoreCase("CHOco", null);
         System.out.println(entities);
     }
     @Test
