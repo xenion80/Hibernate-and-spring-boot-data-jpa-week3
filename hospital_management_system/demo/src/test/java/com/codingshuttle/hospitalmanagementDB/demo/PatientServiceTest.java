@@ -5,6 +5,7 @@ import com.codingshuttle.hospitalmanagementDB.demo.dto.CPatientInfo;
 import com.codingshuttle.hospitalmanagementDB.demo.dto.PatientIndfo;
 import com.codingshuttle.hospitalmanagementDB.demo.entity.Patient;
 import com.codingshuttle.hospitalmanagementDB.demo.repository.PatientRepository;
+import com.codingshuttle.hospitalmanagementDB.demo.service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,9 @@ import java.util.List;
 public class PatientServiceTest {
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private PatientService patientService;
     @Test
     public void testPatient(){
 //        List<Patient> patientList =patientRepository.findAll();
@@ -25,7 +29,11 @@ public class PatientServiceTest {
 //        for(var p: patientList){
 //            System.out.println(p);
 //        }
-        int rowsAffected=patientRepository.updatePatientNameWithId("Karan Sardar", 31L);
+//        int rowsAffected=patientRepository.updatePatientNameWithId("Karan Sardar", 1L);
+//        Patient patient=new Patient();
+//        patientRepository.save(patient);
+
+        patientService.testPatientTransaction();
 
     }
 }
