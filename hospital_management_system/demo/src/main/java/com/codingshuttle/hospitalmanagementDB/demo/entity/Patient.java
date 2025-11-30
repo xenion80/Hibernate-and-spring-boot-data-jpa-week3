@@ -13,7 +13,7 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@ToString
+@ToString(exclude = {"insurance", "appointments"})
 @Getter
 @Setter
 public class Patient {
@@ -34,9 +34,11 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
+    @OneToOne(cascade =CascadeType.ALL )
     @JoinColumn(name="patient_insurance",unique = true)
     private Insurance insurance;//owning side
-    @OneToMany(mappedBy = "patient")//inverse side of the relationship
+
+
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)//inverse side of the relationship
     private Set<Appointment> appointments=new HashSet<>();
 }

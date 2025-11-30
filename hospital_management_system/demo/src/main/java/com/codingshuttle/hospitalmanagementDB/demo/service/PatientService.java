@@ -20,4 +20,9 @@ public class PatientService {
         p1.setName("karan");
 
     }
+    @Transactional
+    public void deletePatient(Long patientId){
+        Patient patient=patientRepository.findById(patientId).orElseThrow();
+        patientRepository.deleteById(patientId);
+    }
 }

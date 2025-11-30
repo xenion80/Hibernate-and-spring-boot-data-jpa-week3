@@ -1,16 +1,17 @@
 package com.codingshuttle.hospitalmanagementDB.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +25,11 @@ public class Appointment {
 
     @ManyToOne//owning side of the relationship
     @JoinColumn(nullable = false)
+    @ToString.Exclude
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Exclude
     private Doctor doctor;
 }
